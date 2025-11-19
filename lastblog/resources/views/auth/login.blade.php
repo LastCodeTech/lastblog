@@ -4,8 +4,12 @@
         <div class="text-center">
             <h2 class="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
             <p class="mt-2 text-sm text-gray-600">Sign in to your account</p>
+            @if(session()->has('message'))
+            <h1 class="text-base font-semibold text-red-600">{{session('messa')}}</h1>
+            @endif
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
+        <form class="mt-8 space-y-6" action="{{route('login.process')}}" method="POST">
+            @csrf
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <label for="email" class="sr-only">Email address</label>
@@ -43,7 +47,7 @@
             <div class="text-center">
                 <p class="text-sm text-gray-600">
                     Don't have an account? 
-                    <a href="register.html" class="font-medium text-red-600 hover:text-red-500">Sign up</a>
+                    <a href="{{route('register')}}" class="font-medium text-red-600 hover:text-red-500">Sign up</a>
                 </p>
             </div>
         </form>

@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class LastblogController extends Controller
 {
-    //
+    public function index(){
+        return view('blog.index');
+    }
 }

@@ -13,7 +13,8 @@
                     </div>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form action="#" method="POST">
+                    <form action="{{route('store')}}" method="POST">
+                        @csrf
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div>
@@ -21,7 +22,10 @@
                                     <div class="mt-1">
                                         <input type="text" id="title" name="title" 
                                             class="shadow-sm focus:ring-red-500 focus:border-red-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2" 
-                                            placeholder="Enter a compelling title">
+                                            placeholder="Enter a compelling title" {{old('title')}}>
+                                             @error('title')
+                                            <h1 class="text-base font-semibold text-red-500">{{$message}}</h1>
+                                            @enderror
                                     </div>
                                 </div>
 
@@ -29,11 +33,11 @@
                                     <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                                     <select id="category" name="category" 
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
-                                        <option>Technology</option>
-                                        <option>Design</option>
-                                        <option>Development</option>
-                                        <option>Business</option>
-                                        <option>Lifestyle</option>
+                                        <option value=''>choose category</option>
+                                        @foreach($categories as $category)
+                                        <option value='{{$category->id}}'>{{$category->name}}</option>
+                                        @endforeach
+                                       
                                     </select>
                                 </div>
 
@@ -42,7 +46,10 @@
                                     <div class="mt-1">
                                         <textarea id="content" name="content" rows="15" 
                                             class="shadow-sm focus:ring-red-500 focus:border-red-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2" 
-                                            placeholder="Write your blog post content here..."></textarea>
+                                            placeholder="Write your blog post content here..." {{old('content')}}></textarea>
+                                            @error('content')
+                                            <h1 class="text-base font-semibold text-red-500">{{$message}}</h1>
+                                            @enderror
                                     </div>
                                 </div>
 

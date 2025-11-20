@@ -8,8 +8,15 @@ class Lastblog extends Model
 {
     protected $fillable=[
         'title',
-        'category',
+        'categories_id',
         'user_id',
         'content'
     ];
+    
+    public function category(){
+       return $this->belongsTo(Categories::class,'categories_id');
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -9,4 +9,10 @@ class Categories extends Model
     protected $fillable=[
         'name'
     ];
+
+    public function blogs()
+{
+    return $this->hasMany(Lastblog::class);
+}
+
 }

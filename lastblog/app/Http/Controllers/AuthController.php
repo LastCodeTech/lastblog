@@ -38,7 +38,7 @@ if(Auth::attempt($validate)){
 return redirect()->route('index');
 }
 else{
-    return redirect()->route('register')->with('message','email or password is incorrect');
+    return redirect()->route('login')->with('message','email or password is incorrect');
 }
     }
 }

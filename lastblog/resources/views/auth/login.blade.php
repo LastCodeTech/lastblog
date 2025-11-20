@@ -5,7 +5,7 @@
             <h2 class="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
             <p class="mt-2 text-sm text-gray-600">Sign in to your account</p>
             @if(session()->has('message'))
-            <h1 class="text-base font-semibold text-red-600">{{session('messa')}}</h1>
+            <h1 class="text-base font-semibold text-red-600">{{session('message')}}</h1>
             @endif
         </div>
         <form class="mt-8 space-y-6" action="{{route('login.process')}}" method="POST">
